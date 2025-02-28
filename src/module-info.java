@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * 
- */
-module cmd_payment {
-}
