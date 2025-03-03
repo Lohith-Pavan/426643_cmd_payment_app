@@ -14,6 +14,13 @@ public class User_Details {
     private String phoneNumber;
     private String email;
     private String address;
+    private User_Account_Details userAccDet;
+	public User_Account_Details getUserAccDet() {
+		return userAccDet;
+	}
+	public void setUserAccDet(User_Account_Details userAccDet) {
+		this.userAccDet = userAccDet;
+	}
 	public User_Details() {
 		super();
 	}

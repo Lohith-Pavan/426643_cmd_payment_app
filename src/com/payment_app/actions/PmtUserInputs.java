@@ -29,12 +29,14 @@ public class PmtUserInputs {
    	  return user;
     }
     public User_Details getUserLoginInput() {
+    	boolean flag = true;
+    	while(flag) 
     	System.out.println("Enter username");
     	String uname = sc.nextLine();
     	System.out.println("Enter password");
     	String upass = sc.nextLine();
     	PmtUserActions userActions = new PmtUserActions();
     	User_Details currentUser = userActions.checkUser(uname, upass);
-        return currentUser;
+        return currentUser; 	
     }
 }
