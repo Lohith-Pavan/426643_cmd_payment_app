@@ -29,8 +29,6 @@ public class PmtUserInputs {
    	  return user;
     }
     public User_Details getUserLoginInput() {
-    	boolean flag = true;
-    	while(flag) 
     	System.out.println("Enter username");
     	String uname = sc.nextLine();
     	System.out.println("Enter password");

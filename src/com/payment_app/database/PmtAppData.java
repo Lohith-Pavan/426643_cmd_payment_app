@@ -8,36 +8,11 @@ import com.payment_app.Entities.Txn_Details;
 import com.payment_app.Entities.User_Account_Details;
 import com.payment_app.Entities.User_Details;
 public class PmtAppData {
-	private static List<User_Details> userDetList;
-	private static List<User_Account_Details> accDetList;
-    private static List<Bank_Accounts> bankAccList;
-    private static List<Txn_Details> txnsList;
+	private static List<User_Details> userDetList = new ArrayList<>();
+	private static List<User_Account_Details> accDetList = new ArrayList<>();
+    private static List<Bank_Accounts> bankAccList = new ArrayList<>();
+    private static List<Txn_Details> txnsList = new ArrayList<>();
     
-    private static User_Details loggedUser;
-
-    public static User_Details getLoggedUser() {
-		return loggedUser;
-	}
-	public static void setLoggedUser(User_Details loggedUser) {
-		PmtAppData.loggedUser = loggedUser;
-	}
-	public static List<User_Details> initusers(){
-		userDetList = new ArrayList<>();
-		return userDetList;
-	}
-	public static List<User_Account_Details> initUserAccDet(){
-		accDetList = new ArrayList<>();
-		return accDetList;
-	}
-	public static List<Bank_Accounts> initBankAccounts(){
-		bankAccList = new ArrayList<>();
-		return bankAccList;
-	}
-	public static List<Txn_Details> initTxnDet(){
-		txnsList = new ArrayList<>();
-		return txnsList;
-	}
-	
 	public static List<User_Details> getUserDetList() {
 		return userDetList;
 	}

@@ -7,28 +7,24 @@ import java.util.Scanner;
 
 import com.payment_app.Entities.*;
 import com.payment_app.Services.PmtAdminService;
+import com.payment_app.Services.PmtUserService;
 import com.payment_app.actionsInterface.PmtUserActionsInt;
 import com.payment_app.database.PmtAppData;
 
 public class PmtUserActions implements PmtUserActionsInt {
 	@Override
 	public void register(User_Details user) {
-		PmtAppData.initusers().add(user);
-		
+		PmtAppData.getUserDetList().add(user);
 	}
 
 	@Override
-	public void login(User_Details user) {
-		PmtAppData.setLoggedUser(user);
-	}
-
-	@Override
-	public void displayUser() {
-		User_Details loggedUser = PmtAppData.getLoggedUser();
-		if (loggedUser != null) {
-			System.out.println(loggedUser);
-		} else {
-			System.out.println("No user is logged in.");
+	public User_Details displayUser() {
+		User_Details loggedUser = 
+		if(PmtAppData.getUserDetList().contains(loggedUser)) {
+			    return loggedUser;
+		}
+		else {
+			return null;
 		}
 	}
 
@@ -44,17 +40,14 @@ public class PmtUserActions implements PmtUserActionsInt {
 	}
 
 	@Override
-	public void addBankAcc(Bank_Accounts bank) {
-		PmtAppData.initBankAccounts().add(bank);
-	}
-
-	@Override
-	public  User_Details checkUser(String username, String password) {
-		for (User_Details user : PmtAppData.getUserDetList()) {
-            if (user.getUserName().equals(username) && user.getPassword().equals(password)) {
-                return user;
-            }
-        }
+	public User_Details checkUser(String username, String password) {
+		if (PmtAppData.getUserDetList() != null) {
+			for (User_Details user : PmtAppData.getUserDetList()) {
+				if (user.getUserName().equals(username) && user.getPassword().equals(password)) {
+					return user;
+				}
+			}
+		}
 		return null;
 	}
 }

@@ -13,5 +13,6 @@ public class PaymentMain {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		PmtAppMenu.appMenu(sc);
+		sc.close();
 	}
 }
