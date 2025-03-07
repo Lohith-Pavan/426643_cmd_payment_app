@@ -6,6 +6,6 @@ import com.payment_app.Entities.User_Details;
 public interface PmtUserActionsInt {
 	public void register(User_Details user);
 	public void displayUsers();
-	public User_Details displayUser();
+	public void displayUser(User_Details currentUser);
 	public User_Details checkUser(String username,String password);
 }

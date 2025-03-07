@@ -18,13 +18,13 @@ public class PmtUserActions implements PmtUserActionsInt {
 	}
 
 	@Override
-	public User_Details displayUser() {
-		User_Details loggedUser = 
+	public void displayUser(User_Details currentUser) {
+		User_Details loggedUser = currentUser;
 		if(PmtAppData.getUserDetList().contains(loggedUser)) {
-			    return loggedUser;
+			    System.out.println(loggedUser);;
 		}
 		else {
-			return null;
+		        System.out.println("no user is logged in");
 		}
 	}
 

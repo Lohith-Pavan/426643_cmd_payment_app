@@ -59,13 +59,18 @@ public class PmtUserService {
 		do {
 			flag = false;
 			PmtUserActions userActions = new PmtUserActions();
-			System.out.println("Enter 1.Display userdetails 2.logout");
+			System.out.println("Enter 1.Display userD"
+					+ "etails 2.logout");
 			int choice = sc.nextInt();
 			switch (choice) {
 			case 1:
 				System.out.println("user details");
-				userActions.displayUser();
+				String username = PmtAppData.getUserDetList().getFirst().getUserName();
+				String password = PmtAppData.getUserDetList().getFirst().getPassword();			
+				User_Details currentUser = userActions.checkUser(username,password);
+				userActions.displayUser(currentUser);
 				flag = true;
+				
 				break;
 			case 2:
 				PmtUserService.userMenu(sc);
