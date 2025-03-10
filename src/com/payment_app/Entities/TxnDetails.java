@@ -2,18 +2,18 @@ package com.payment_app.Entities;
 
 import java.util.Date;
 
-public class Txn_Details {
+public class TxnDetails {
 	private int txnId;
     private Date txnDateTime;
-    private User_Details sourceId;  
-    private User_Details targetId;  
+    private UserDetails sourceId;  
+    private UserDetails targetId;  
     private String sourceType; 
     private String destType;   
     private double txnAmount;
-	public Txn_Details() {
+	public TxnDetails() {
 		super();
 	}
-	public Txn_Details(int txnId, Date txnDateTime, User_Details sourceId, User_Details targetId, String sourceType,
+	public TxnDetails(int txnId, Date txnDateTime, UserDetails sourceId, UserDetails targetId, String sourceType,
 			String destType, double txnAmount) {
 		super();
 		this.txnId = txnId;
@@ -36,16 +36,16 @@ public class Txn_Details {
 	public void setTxnDateTime(Date txnDateTime) {
 		this.txnDateTime = txnDateTime;
 	}
-	public User_Details getSourceId() {
+	public UserDetails getSourceId() {
 		return sourceId;
 	}
-	public void setSourceId(User_Details sourceId) {
+	public void setSourceId(UserDetails sourceId) {
 		this.sourceId = sourceId;
 	}
-	public User_Details getTargetId() {
+	public UserDetails getTargetId() {
 		return targetId;
 	}
-	public void setTargetId(User_Details targetId) {
+	public void setTargetId(UserDetails targetId) {
 		this.targetId = targetId;
 	}
 	public String getSourceType() {

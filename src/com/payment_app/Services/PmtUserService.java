@@ -2,7 +2,9 @@ package com.payment_app.Services;
 
 import java.util.Scanner;
 
-import com.payment_app.Entities.User_Details;
+import com.payment_app.Entities.BankAccounts;
+import com.payment_app.Entities.UserDetails;
+import com.payment_app.actions.PmtBankActions;
 import com.payment_app.actions.PmtUserActions;
 import com.payment_app.actions.PmtUserInputs;
 import com.payment_app.database.PmtAppData;
@@ -12,41 +14,39 @@ public class PmtUserService {
 
 	public static void userMenu(Scanner sc) {
 		PmtUserActions userActions = new PmtUserActions();
-		PmtUserInputs pui = new PmtUserInputs();
 		do {
 			flag = false;
 			System.out.println("Enter 1.Register 2.Login ");
 			int choice = sc.nextInt();
 			switch (choice) {
 			case 1:
-				User_Details user = pui.getUserRegisterInput();
+				UserDetails user = PmtUserInputs.getUserRegisterInput(sc);
 				userActions.register(user);
 				flag = true;
 				while (flag) {
-					User_Details currentUser = pui.getUserLoginInput();
-					if (currentUser == null) {
-						System.out.println("Invalid credentials");
-					} else {
+					UserDetails currentUser = PmtUserInputs.getUserLoginInput(sc);
+					if (currentUser != null) {
 						flag = false;
+						PmtAppData.setLoggedInUser(currentUser);
 						PmtUserService.loginMenu(sc);
+					} else {
+						System.out.println("Invalid credentials");
 					}
 				}
 				break;
 			case 2:
 				flag = true;
 				while (flag) {
-					User_Details currentUser = pui.getUserLoginInput();
-					if (currentUser == null) {
+					UserDetails currentUser = PmtUserInputs.getUserLoginInput(sc);
+					if (currentUser != null) {
+						flag = false;
+						PmtAppData.setLoggedInUser(currentUser);
+						PmtUserService.loginMenu(sc);
+					} else {
 						System.out.println("Invalid credentials");
 						PmtUserService.userMenu(sc);
-					} else {
-						flag = false;
-						PmtUserService.loginMenu(sc);
 					}
 				}
-				break;
-			case 3:
-				userActions.displayUsers();
 				break;
 			default:
 				System.out.println("Enter correct option");
@@ -58,21 +58,25 @@ public class PmtUserService {
 	public static void loginMenu(Scanner sc) {
 		do {
 			flag = false;
-			PmtUserActions userActions = new PmtUserActions();
-			System.out.println("Enter 1.Display userD"
-					+ "etails 2.logout");
+			PmtBankActions bankActions = new PmtBankActions();
+			System.out.println("Enter 1.AddBankAccount 2.RemoveBankAccount 3.DisplayUserDetails 4.logout");
 			int choice = sc.nextInt();
 			switch (choice) {
 			case 1:
-				System.out.println("user details");
-				String username = PmtAppData.getUserDetList().getFirst().getUserName();
-				String password = PmtAppData.getUserDetList().getFirst().getPassword();			
-				User_Details currentUser = userActions.checkUser(username,password);
-				userActions.displayUser(currentUser);
-				flag = true;
-				
+				BankAccounts bankAcc = PmtUserInputs.getUserBankAccount(sc);
+				bankActions.addBankAcc(bankAcc);
 				break;
 			case 2:
+				BankAccounts removedBank = PmtUserInputs.removeUserBankAccount(sc);
+				bankActions.removeBankAcc(removedBank);
+			    break;
+			case 3:
+				System.out.println("user details");
+		        UserDetails currentUser = PmtAppData.getLoggedInUser();
+		        System.out.println(currentUser);
+				break;
+			case 4:
+				PmtAppData.setLoggedInUser(null);
 				PmtUserService.userMenu(sc);
 			default:
 				System.out.println("Enter correct option");

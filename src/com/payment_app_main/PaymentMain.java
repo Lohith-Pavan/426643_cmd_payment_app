@@ -2,7 +2,7 @@ package com.payment_app_main;
 
 import java.util.Scanner;
 
-import com.payment_app.Entities.User_Details;
+import com.payment_app.Entities.UserDetails;
 import com.payment_app.Services.PmtAdminService;
 import com.payment_app.Services.PmtAppMenu;
 import com.payment_app.actions.*;

@@ -2,14 +2,14 @@ package com.payment_app.Entities;
 
 import java.util.ArrayList;
 
-public class Source_Types {
+public class SourceTypes {
 	private int sourceId;
     private String sourceTypeCode;
     private String sourceTypeName;
-	public Source_Types() {
+	public SourceTypes() {
 		super();
 	}
-	public Source_Types(int sourceId, String sourceTypeCode, String sourceTypeName) {
+	public SourceTypes(int sourceId, String sourceTypeCode, String sourceTypeName) {
 		super();
 		this.sourceId = sourceId;
 		this.sourceTypeCode = sourceTypeCode;

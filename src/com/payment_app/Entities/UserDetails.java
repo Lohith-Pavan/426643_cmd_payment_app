@@ -1,9 +1,10 @@
 package com.payment_app.Entities;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class User_Details {
+public class UserDetails {
 	Scanner sc = new Scanner(System.in);
 	private static int counter = 1;
 	private int userId;
@@ -14,17 +15,13 @@ public class User_Details {
     private String phoneNumber;
     private String email;
     private String address;
-    private User_Account_Details userAccDet;
-	public User_Account_Details getUserAccDet() {
-		return userAccDet;
-	}
-	public void setUserAccDet(User_Account_Details userAccDet) {
-		this.userAccDet = userAccDet;
-	}
-	public User_Details() {
+    private UserAccountDetails userAccDet;
+    private List<BankAccounts> bankAccounts;
+    
+	public UserDetails() {
 		super();
 	}
-	public User_Details(String userName, String password, String firstName, String lastName,
+	public UserDetails(String userName, String password, String firstName, String lastName,
 			String phoneNumber, String email, String address) {
 		super();
 		this.userId = counter++;
@@ -35,6 +32,19 @@ public class User_Details {
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.address = address;
+		this.bankAccounts = new ArrayList<>();
+	}
+	public List<BankAccounts> getBankAccounts() {
+		return bankAccounts;
+	}
+	public void setBankAccounts(BankAccounts bankAcc) {
+		bankAccounts.add(bankAcc);
+	}
+	public UserAccountDetails getUserAccDet() {
+		return userAccDet;
+	}
+	public void setUserAccDet(UserAccountDetails userAccDet) {
+		this.userAccDet = userAccDet;
 	}
 	public int getUserId() {
 		return userId;

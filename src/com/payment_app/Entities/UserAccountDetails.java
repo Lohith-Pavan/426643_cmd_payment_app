@@ -1,19 +1,23 @@
 package com.payment_app.Entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class User_Account_Details {
+public class UserAccountDetails {
 	private int userAccountId;
     private Date accountOpenDate;
     private double currentWalletBalance;
     private int linkedBankAccountsCount;
     private String walletPin;
-    private User_Details userDetails;
-	public User_Account_Details() {
+    private UserDetails userDetails;
+    private List<BankAccounts> banks;
+    
+	public UserAccountDetails() {
 		super();
 	}
-	public User_Account_Details(int userAccountId, Date accountOpenDate, double currentWalletBalance,
-			int linkedBankAccountsCount, String walletPin, User_Details userDetails) {
+	public UserAccountDetails(int userAccountId, Date accountOpenDate, double currentWalletBalance,
+			int linkedBankAccountsCount, String walletPin, UserDetails userDetails) {
 		super();
 		this.userAccountId = userAccountId;
 		this.accountOpenDate = accountOpenDate;
@@ -21,6 +25,14 @@ public class User_Account_Details {
 		this.linkedBankAccountsCount = linkedBankAccountsCount;
 		this.walletPin = walletPin;
 		this.userDetails = userDetails;
+		banks = new ArrayList<>();
+	}
+	
+	public List<BankAccounts> getBanks() {
+		return banks;
+	}
+	public void setBanks(List<BankAccounts> banks) {
+		this.banks = banks;
 	}
 	public int getUserAccountId() {
 		return userAccountId;
@@ -52,10 +64,10 @@ public class User_Account_Details {
 	public void setWalletPin(String walletPin) {
 		this.walletPin = walletPin;
 	}
-	public User_Details getUserDetails() {
+	public UserDetails getUserDetails() {
 		return userDetails;
 	}
-	public void setUserDetails(User_Details userDetails) {
+	public void setUserDetails(UserDetails userDetails) {
 		this.userDetails = userDetails;
 	}
 	@Override
